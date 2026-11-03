@@ -46,7 +46,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix: ${{ fromJSON(needs.config.outputs.matrix) }}
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os == 'macos-latest' && 'macos-15' || matrix.os }}
 
     steps:
       - uses: actions/checkout@v6
